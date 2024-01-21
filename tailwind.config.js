@@ -3,7 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
-      background: '#d2b5fc'
+      white: "#FFF",
+      background: "#d2b5fc",
       red: "#ff3b3b",
       button: "#8736f6",
       orange: "#ff6c39",
@@ -15,6 +16,7 @@ export default {
       grayDark: "#273444",
       gray: "#8492a6",
       grayLight: "#d3dce6",
+      textLight: "#999aaf",
     },
     fontFamily: {
       sans: ["Graphik", "sans-serif"],
