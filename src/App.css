@@ -1,0 +1,17 @@
+html {
+  font-family: "Proxima Nova", system-ui, sans-serif;
+  background: #fafafc;
+}
+
+.container_main {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  max-height: 70px;
+  min-height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
