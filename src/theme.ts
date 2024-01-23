@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import {  createTheme } from "@mui/material";
 
 // const muiTheme = {
 //   colors: {
@@ -22,10 +22,10 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#8736f6", // Change this to your preferred primary color
+      main: "#8736f6", 
     },
     secondary: {
-      main: "#ff6c39", // Change this to your preferred secondary color
+      main: "#ff6c39", 
     },
     background: {
       default: '#fff',
@@ -36,7 +36,16 @@ const theme = createTheme({
     fontFamily: "Roboto, sans-serif",
     fontSize: 16,
   },
-  spacing: 8,
+  components: {
+    MuiSvgIcon: {
+      styleOverrides: {
+       root: {
+        width: '3rem', 
+        height: '3rem',
+       } 
+      }
+    },
+  }
 });
 
 export default theme;

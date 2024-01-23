@@ -16,10 +16,10 @@ export const StyledTabs = styled(Tabs)({
 
 export const NavigationTabs = styled(Tab)({
   svg: {
-    width: "1.2em",
-    height: "1.2em",
+    width: "2.3rem",
+    height: "2.3rem",
   },
-  margin: "0px 20px",
+  margin: "0px 1.5rem",
 });
 
 export default function MainTabs() {
