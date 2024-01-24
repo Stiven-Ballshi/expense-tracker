@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  column-gap: 30px;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  /* padding: 2rem; */
+}
+
+.trackBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 2.1rem;
+  letter-spacing: 0.1rem;
+}
+
+.income {
+  background-color: #d2b5fc;
+}
+
+.expense {
+  background-color: rgb(255 239 235);
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabContainer {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}

@@ -2,39 +2,32 @@
 import { Route, Routes } from "react-router-dom";
 import OverviewPage from "./pages/Overview/OverviewPage";
 import UserPage from "./pages/User/UserPage";
-import TransactionsPage from "./pages/Transactions/transactionsPage";
-import { Tab, Tabs, styled } from "@mui/material";
+// import TransactionsPage from "./pages/Transactions/transactionsPage";
 
 import MainTabs from "./components/Tabs/MainTabs";
 import PlusComponent from "./components/Tabs/PlusComponent";
 
-import "./index.css";
-import "./App.css";
 import Homepage from "./pages/Home/Homepage";
+import ErrorPage from "./components/Error/ErrorPage";
+import HomepageHeader from "./components/AppHeader";
+
+import "./App.css";
+import "./index.css";
 
 const isFirstTimeLogIn = false;
-
-export const StyledTabs = styled(Tabs)({
-  ".MuiTabs-indicator": {
-    display: "none",
-    width: "100%",
-  },
-});
-
-export const NavigationTabs = styled(Tab)({
-  margin: "0px 1.5rem",
-});
 
 function App() {
   return (
     <div className="App">
+      <HomepageHeader />
       <MainTabs />
       <PlusComponent />
       <Routes>
+        <Route path="*" element={<ErrorPage />}></Route>
         <Route path="/homepage" element={<Homepage />}></Route>
-        <Route path="/overview" element={<OverviewPage />} />
+        <Route path="/transactions" element={<OverviewPage />} />
         <Route path="/user" element={<UserPage />} />
-        <Route path="/transaction" element={<TransactionsPage />} />
+        {/* <Route path="/transaction" element={<TransactionsPage />} /> */}
       </Routes>
     </div>
   );

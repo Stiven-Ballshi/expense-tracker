@@ -45,11 +45,19 @@ const theme = createTheme({
        } 
       }
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          padding: '12px 0px'
+        }
+      }
+    },
     MuiTabs: {
       styleOverrides: {
         root: {
           position: 'fixed',
           bottom: 0,
+          width: '100%'
         }
       }
     }
