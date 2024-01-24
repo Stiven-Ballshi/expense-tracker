@@ -3,11 +3,12 @@ import Stack from "@mui/material/Stack";
 import { TTransactions } from "../../types";
 
 type TProps = {
-  transactions: { name: string; time: string }[];
+  transactions: TTransactions[];
   overview?: Boolean;
 };
 
 function TransactionComponent({ transactions, overview }: TProps) {
+  console.log(transactions[0], "tra");
   return (
     <>
       <div className="transactionsHeader">
@@ -36,8 +37,12 @@ function TransactionComponent({ transactions, overview }: TProps) {
                   <span className="tranTime">{tr.time}</span>
                 </div>
               </div>
-              <span className="tranAmount" style={{ color: "red" }}>
-                -$450
+              <span
+                className="tranAmount"
+                style={{ color: tr.type === "income" ? "green" : "red" }}
+              >
+                {tr.type === "income" ? "+$" : "-$"}
+                {tr.trans}
               </span>
             </div>
           );

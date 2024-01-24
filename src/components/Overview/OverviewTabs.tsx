@@ -1,6 +1,4 @@
-import { Tab, Typography } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import { Tab } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
 import styles from "./Header.module.css";
@@ -34,23 +32,27 @@ function TabPanel(props: TabPanelProps) {
 function OverviewTabs() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-
   const [incomes, setIncomes] = useState<TTransactions[]>(
     new Array(10).fill({
       name: "Stiven",
       time: "10:02AM",
+      trans: "450",
+      type: "income",
     })
   );
 
   const [expenses, setExpenses] = useState<TTransactions[]>(
     new Array(10).fill({
-      name: "Stiven",
+      name: "Endrit",
       time: "10:02AM",
+      trans: "350",
+      type: "expense",
     })
   );
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
   return (
     <div className={styles.tabContainer}>
