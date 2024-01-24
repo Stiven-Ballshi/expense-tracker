@@ -26,28 +26,9 @@ export const NavigationTabs = styled(Tab)({
 });
 
 function App() {
-  const routes = [
-    {
-      path: "/homepage",
-      idx: 0,
-    },
-    {
-      path: "/overview",
-      idx: 1,
-    },
-    {
-      path: "/transactions",
-      idx: 2,
-    },
-    {
-      path: "/user",
-      idx: 3,
-    },
-  ];
-
   return (
     <div className="App">
-      <MainTabs routes={routes} />
+      <MainTabs />
       <PlusComponent />
       <Routes>
         <Route path="/homepage" element={<Homepage />}></Route>
