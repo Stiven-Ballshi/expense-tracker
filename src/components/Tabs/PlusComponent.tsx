@@ -18,7 +18,7 @@ export const StyledAddDiv = styled("div")({
 
 export const StyledOuterAddDiv = styled("div")({
   position: "absolute",
-  bottom: "-10%",
+  bottom: "1vh",
   left: "50%",
   transform: "translate(-50%, -50%)",
   display: "flex",

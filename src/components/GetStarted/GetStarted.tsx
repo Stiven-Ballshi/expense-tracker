@@ -282,7 +282,7 @@ function GetStarted() {
           works for you , the less you have to work for money
         </h1>
         <Button>
-          <Link to="/main">Get Started</Link>
+          <Link to="/home">Get Started</Link>
         </Button>
       </div>
     </div>

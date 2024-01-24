@@ -1,8 +1,8 @@
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-import "../../App.css";
 import IconButton from "@mui/material/IconButton";
+import "../../App.css";
 
 function HomepageCard() {
   return (

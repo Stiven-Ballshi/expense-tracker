@@ -4,44 +4,49 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
 import StackedBarChartIcon from "@mui/icons-material/StackedBarChart";
 
-import { Tab, Tabs, styled } from "@mui/material";
+import { NavigationTabs, StyledTabs } from "./Tabs.styled";
+import { useNavigate } from "react-router-dom";
 import "../../App.css";
 
-export const StyledTabs = styled(Tabs)({
-  ".MuiTabs-indicator": {
-    display: "none",
-    width: "100%",
-  },
-});
+enum RouteIndexes {
+  HomePage,
+  Overview,
+  Transaction,
+  User,
+}
 
-export const NavigationTabs = styled(Tab)({
-  svg: {
-    width: "2.3rem",
-    height: "2.3rem",
-  },
-  margin: "0px 1.5rem",
-});
+type RouteObj = {
+  [key in RouteIndexes]: string;
+};
+
+const ConstructedRouteIndexes: RouteObj = {
+  [RouteIndexes.HomePage]: "/homepage",
+  [RouteIndexes.Overview]: "/overview",
+  [RouteIndexes.Transaction]: "/transaction",
+  [RouteIndexes.User]: "/user",
+};
 
 export default function MainTabs() {
   const [value, setValue] = useState(0);
+  const navigate = useNavigate();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    let currentTab = ConstructedRouteIndexes[newValue as keyof RouteObj];
     setValue(newValue);
+    navigate(currentTab);
   };
 
   return (
     <>
-      <StyledTabs
-        centered
-        value={value}
-        onChange={handleChange}
-        aria-label="icon tabs example"
-      >
-        <NavigationTabs icon={<HomeIcon />} aria-label="phone" />
-        <NavigationTabs icon={<StackedBarChartIcon />} aria-label="chart" />
-
-        <NavigationTabs icon={<FavoriteIcon />} aria-label="favorite" />
-        <NavigationTabs icon={<PersonIcon />} aria-label="person" />
+      <StyledTabs centered value={value} onChange={handleChange}>
+        <NavigationTabs value={0} label="Home" icon={<HomeIcon />} />
+        <NavigationTabs
+          value={1}
+          label="Overview"
+          icon={<StackedBarChartIcon />}
+        />
+        <NavigationTabs value={2} label="Favorite" icon={<FavoriteIcon />} />
+        <NavigationTabs value={3} label="User" icon={<PersonIcon />} />
       </StyledTabs>
     </>
   );

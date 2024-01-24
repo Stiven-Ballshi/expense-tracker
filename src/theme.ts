@@ -45,6 +45,14 @@ const theme = createTheme({
        } 
       }
     },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          position: 'fixed',
+          bottom: 0,
+        }
+      }
+    }
   }
 });
 
