@@ -9,7 +9,7 @@ type Props = {
   category: string;
 };
 
-function IconUpOrDownComponent({ category, isIncome, isExpense }: Props) {
+function IconUpOrDownComponent({ category, isIncome }: Props) {
   return (
     <div className="flexBox">
       <div style={{ display: "flex", alignItems: "center" }}>

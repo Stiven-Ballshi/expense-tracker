@@ -50,7 +50,9 @@ function OverviewTabs() {
     })
   );
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  console.log(setExpenses, setIncomes);
+
+  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 

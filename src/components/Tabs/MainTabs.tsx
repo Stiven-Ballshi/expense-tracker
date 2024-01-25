@@ -16,7 +16,7 @@ export default function MainTabs() {
   );
   const navigate = useNavigate();
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
     let currentTab = ConstructedRouteIndexes[newValue as keyof RouteObj];
     navigate(currentTab);

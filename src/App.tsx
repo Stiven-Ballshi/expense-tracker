@@ -32,7 +32,7 @@ export const StyledOuterAppDiv = styled("div")<{ isSafari?: boolean }>(
   })
 );
 
-const isFirstTimeLogIn = false;
+// const isFirstTimeLogIn = false;
 
 function App() {
   return (

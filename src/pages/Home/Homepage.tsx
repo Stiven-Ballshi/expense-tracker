@@ -16,6 +16,8 @@ function Homepage() {
     })
   );
 
+  console.log(setTransactions);
+
   return (
     <div
       style={{

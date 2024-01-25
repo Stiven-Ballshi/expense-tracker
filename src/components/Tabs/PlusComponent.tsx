@@ -16,14 +16,6 @@ export const StyledAddDiv = styled("div")({
   },
 });
 
-const StyledComp = styled("div")<{ myProp?: boolean; color?: string }>(
-  ({ theme, myProp, color }) => ({
-    backgroundColor: myProp ? "aliceblue" : "red",
-    color,
-    padding: theme.spacing(1),
-  })
-);
-
 export const StyledOuterAddDiv = styled("div")<{ isSafari?: boolean }>(
   (prop) => ({
     position: "absolute",
