@@ -15,16 +15,14 @@ import { styled } from "@mui/material";
 import TransactionsPage from "./pages/Transactions/TransactionsPage";
 import OverviewPage from "./pages/Overview/OverviewPage";
 
-export const StyledOuterAppDiv = styled("div")<{ isSafari?: boolean }>(
-  (prop) => ({
-    position: "relative",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    overflowY: "scroll",
-    zIndex: "10",
-  })
-);
+export const StyledOuterAppDiv = styled("div")({
+  position: "relative",
+  minHeight: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  overflowY: "scroll",
+  zIndex: "10",
+});
 
 function App() {
   return (
