@@ -8,7 +8,6 @@ type TProps = {
 };
 
 function TransactionComponent({ transactions, overview }: TProps) {
-  console.log(transactions[0], "tra");
   return (
     <>
       <div className="transactionsHeader">

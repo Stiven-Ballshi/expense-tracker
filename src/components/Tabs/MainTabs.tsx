@@ -29,14 +29,10 @@ export default function MainTabs() {
   return (
     <>
       <StyledTabs centered value={value} onChange={handleChange}>
-        <NavigationTabs value={0} label="Home" icon={<HomeIcon />} />
-        <NavigationTabs
-          value={1}
-          label="Transactions"
-          icon={<StackedBarChartIcon />}
-        />
-        <NavigationTabs value={2} label="Overview" icon={<FavoriteIcon />} />
-        <NavigationTabs value={3} label="User" icon={<PersonIcon />} />
+        <NavigationTabs value={0} icon={<HomeIcon />} />
+        <NavigationTabs value={1} icon={<StackedBarChartIcon />} />
+        <NavigationTabs value={2} icon={<FavoriteIcon />} />
+        <NavigationTabs value={3} icon={<PersonIcon />} />
       </StyledTabs>
     </>
   );

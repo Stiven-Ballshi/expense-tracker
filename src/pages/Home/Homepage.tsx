@@ -1,9 +1,10 @@
 import HomepageCard from "../../components/Homepage/HomepageCard";
 import HomepageTransactions from "../../components/Homepage/HomepageTransactions";
 
-import "../../App.css";
 import { useState } from "react";
 import { TTransactions } from "../../types";
+
+import "../../App.css";
 
 function Homepage() {
   const [transactions, setTransactions] = useState<TTransactions[]>(
@@ -14,6 +15,7 @@ function Homepage() {
       type: "expense",
     })
   );
+
   return (
     <div
       style={{

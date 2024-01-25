@@ -13,12 +13,30 @@ import HomepageHeader from "./components/AppHeader";
 
 import "./App.css";
 import "./index.css";
+import { styled } from "@mui/material";
+
+// .App {
+//   /* min-height: -webkit-fill-available; */
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   position: relative;
+// }
+
+export const StyledOuterAppDiv = styled("div")<{ isSafari?: boolean }>(
+  (prop) => ({
+    position: "relative",
+    minHeight: prop.isSafari ? "-webkit-fill-available" : "100vh",
+    display: "flex",
+    flexDirection: "column",
+  })
+);
 
 const isFirstTimeLogIn = false;
 
 function App() {
   return (
-    <div className="App">
+    <StyledOuterAppDiv className="App">
       <HomepageHeader />
       <MainTabs />
       <PlusComponent />
@@ -29,7 +47,7 @@ function App() {
         <Route path="/user" element={<UserPage />} />
         {/* <Route path="/transaction" element={<TransactionsPage />} /> */}
       </Routes>
-    </div>
+    </StyledOuterAppDiv>
   );
 }
 

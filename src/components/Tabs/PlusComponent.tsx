@@ -16,24 +16,36 @@ export const StyledAddDiv = styled("div")({
   },
 });
 
-export const StyledOuterAddDiv = styled("div")({
-  position: "absolute",
-  bottom: "1vh",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  filter: "drop-shadow(0px 10px 10px #8736f6)",
-  borderRadius: "50%",
-  width: "90px",
-  height: "90px",
-  zIndex: "10000",
-});
+const StyledComp = styled("div")<{ myProp?: boolean; color?: string }>(
+  ({ theme, myProp, color }) => ({
+    backgroundColor: myProp ? "aliceblue" : "red",
+    color,
+    padding: theme.spacing(1),
+  })
+);
+
+export const StyledOuterAddDiv = styled("div")<{ isSafari?: boolean }>(
+  (prop) => ({
+    position: "absolute",
+    bottom: prop.isSafari ? "10%" : "0%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    filter: "drop-shadow(0px 10px 10px #8736f6)",
+    borderRadius: "50%",
+    width: "70px",
+    height: "70px",
+    zIndex: "10000",
+  })
+);
 
 function PlusComponent() {
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   return (
-    <StyledOuterAddDiv>
+    <StyledOuterAddDiv isSafari={isSafari}>
       <StyledAddDiv>
         <IconButton>
           <AddIcon />

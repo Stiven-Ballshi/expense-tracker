@@ -40,8 +40,8 @@ const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
        root: {
-        width: '3rem', 
-        height: '3rem',
+        width: '2.5rem', 
+        height: '2.5rem',
        } 
       }
     },
