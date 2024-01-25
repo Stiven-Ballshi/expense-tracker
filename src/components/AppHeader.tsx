@@ -14,16 +14,18 @@ function HomepageHeader() {
   return (
     <div className="homepageContainer">
       <IconButton
-        onClick={() => navigate("/homepage")}
+        onClick={() => navigate("/")}
         style={{ backgroundColor: "#f9f5ff", borderRadius: "5px" }}
         className="widgetButton"
       >
         <WidgetsOutlinedIcon />
       </IconButton>
 
-      <span style={{ textTransform: "capitalize" }}>{getCurrentUrl}</span>
+      <span style={{ textTransform: "capitalize" }}>
+        {getCurrentUrl || "Homepage"}
+      </span>
 
-      {getCurrentUrl === "homepage" ? (
+      {getCurrentUrl === "" ? (
         <IconButton>
           <BadgeComponent />
         </IconButton>

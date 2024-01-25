@@ -10,7 +10,7 @@ export type RouteObj = {
 };
 
 export const ConstructedRouteIndexes: RouteObj = {
-  [RouteIndexes.HomePage]: "/homepage",
+  [RouteIndexes.HomePage]: "/",
   [RouteIndexes.Transactions]: "/transactions",
   [RouteIndexes.Overview]: "/overview",
   [RouteIndexes.User]: "/user",

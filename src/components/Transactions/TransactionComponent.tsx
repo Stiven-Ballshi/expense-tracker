@@ -1,13 +1,29 @@
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { TTransactions } from "../../types";
+import { styled } from "@mui/material";
 
 type TProps = {
   transactions: TTransactions[];
   overview?: Boolean;
 };
 
+export const CustomTransactionsDiv = styled("div")<{ isSafari?: boolean }>(
+  (prop) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    justifyContent: "center",
+    rowGap: "2rem",
+    height: prop.isSafari ? "35vh" : "45vh",
+    scrollBehavior: "smooth",
+    overflowY: "auto",
+  })
+);
+
 function TransactionComponent({ transactions, overview }: TProps) {
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   return (
     <>
       <div className="transactionsHeader">
@@ -19,7 +35,7 @@ function TransactionComponent({ transactions, overview }: TProps) {
         )}
       </div>
 
-      <div className="transactions">
+      <CustomTransactionsDiv isSafari={isSafari} className="transactions">
         {transactions.map((tr: TTransactions, index: number) => {
           return (
             <div key={index} className="transaction">
@@ -46,7 +62,7 @@ function TransactionComponent({ transactions, overview }: TProps) {
             </div>
           );
         })}
-      </div>
+      </CustomTransactionsDiv>
     </>
   );
 }

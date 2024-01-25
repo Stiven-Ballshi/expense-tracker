@@ -1,20 +1,20 @@
-import OverviewHeader from "../../components/Overview/OverviewHeader";
-import OverviewTabs from "../../components/Overview/OverviewTabs";
+import React from "react";
 
-type Props = {};
-
-function OverviewPage({}: Props) {
+function OverviewPage() {
   return (
     <div
       style={{
-        padding: "20px",
+        fontSize: "2.5rem",
         display: "flex",
         flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50vh",
         rowGap: "20px",
       }}
     >
-      <OverviewHeader />
-      <OverviewTabs />
+      <p>Overview page is not ready yet</p>
+      <p>Coming soon !</p>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import IconButton from "@mui/material/IconButton";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import styles from "./Header.module.css";
 
 function OverviewHeader() {
@@ -16,7 +17,7 @@ function OverviewHeader() {
               marginRight: "10px",
             }}
           >
-            <ArrowUpwardIcon
+            <ArrowDownwardIcon
               style={{ width: "1.5rem", fill: "white" }}
               className="cardIcon"
             />
@@ -25,7 +26,7 @@ function OverviewHeader() {
         </div>
       </div>
       <div className={`${styles.trackBox} ${styles.expense}`}>
-        <span style={{ color: "hsl(240 12% 66% / 1)" }}>Total Income</span>
+        <span style={{ color: "hsl(240 12% 66% / 1)" }}>Total Expenses</span>
         <div className={styles.number}>
           <IconButton
             style={{

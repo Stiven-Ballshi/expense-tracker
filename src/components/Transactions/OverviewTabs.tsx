@@ -2,7 +2,7 @@ import { Tab } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
 import styles from "./Header.module.css";
-import TransactionComponent from "../Transactions/TransactionComponent";
+import TransactionComponent from "./TransactionComponent";
 import { TTransactions } from "../../types";
 
 interface TabPanelProps {

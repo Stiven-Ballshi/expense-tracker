@@ -62,6 +62,7 @@ html {
   font-family: "Proxima Nova", system-ui, sans-serif;
   font-size: 62.5%;
   letter-spacing: 1.4px;
+  overflow: hidden;
 }
 
 /* preformatted text - use only for this feature */

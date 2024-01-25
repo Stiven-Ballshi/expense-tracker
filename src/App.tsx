@@ -1,8 +1,6 @@
 // import GetStarted from "./components/GetStarted/GetStarted";
 import { Route, Routes } from "react-router-dom";
-import OverviewPage from "./pages/Overview/OverviewPage";
 import UserPage from "./pages/User/UserPage";
-// import TransactionsPage from "./pages/Transactions/transactionsPage";
 
 import MainTabs from "./components/Tabs/MainTabs";
 import PlusComponent from "./components/Tabs/PlusComponent";
@@ -14,25 +12,19 @@ import HomepageHeader from "./components/AppHeader";
 import "./App.css";
 import "./index.css";
 import { styled } from "@mui/material";
-
-// .App {
-//   /* min-height: -webkit-fill-available; */
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   position: relative;
-// }
+import TransactionsPage from "./pages/Transactions/TransactionsPage";
+import OverviewPage from "./pages/Overview/OverviewPage";
 
 export const StyledOuterAppDiv = styled("div")<{ isSafari?: boolean }>(
   (prop) => ({
     position: "relative",
-    minHeight: prop.isSafari ? "-webkit-fill-available" : "100vh",
+    minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
+    overflowY: "scroll",
+    zIndex: "10",
   })
 );
-
-// const isFirstTimeLogIn = false;
 
 function App() {
   return (
@@ -42,8 +34,9 @@ function App() {
       <PlusComponent />
       <Routes>
         <Route path="*" element={<ErrorPage />}></Route>
-        <Route path="/homepage" element={<Homepage />}></Route>
-        <Route path="/transactions" element={<OverviewPage />} />
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="/overview" element={<OverviewPage />} />
         <Route path="/user" element={<UserPage />} />
         {/* <Route path="/transaction" element={<TransactionsPage />} /> */}
       </Routes>

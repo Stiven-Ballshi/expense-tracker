@@ -1,7 +1,22 @@
+import OverviewHeader from "../../components/Transactions/OverviewHeader";
+import OverviewTabs from "../../components/Transactions/OverviewTabs";
+
 type Props = {};
 
-function TransactionsPage({}: Props) {
-  return <div>TransactionsPage</div>;
+function TransactionPage({}: Props) {
+  return (
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        rowGap: "20px",
+      }}
+    >
+      <OverviewHeader />
+      <OverviewTabs />
+    </div>
+  );
 }
 
-export default TransactionsPage;
+export default TransactionPage;
