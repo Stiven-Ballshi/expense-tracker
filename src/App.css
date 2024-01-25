@@ -27,17 +27,7 @@ html {
   padding: 2rem;
 }
 
-.homepageCard {
-  display: flex;
-  flex-direction: column;
-  background-image: linear-gradient(to right top, #8736f6, #cc00cd, #ef00a3, #fe007c, #ff355c, #fc613e, #ee8527, #daa323, #b7c246, #91da7c, #6dedb9, #5ffbf1);
 
-  padding: 20px;
-  font-size: 2.5rem;
-  border-radius: 20px;
-  color: white;
-  font-weight: 300;
-}
 
 .outcomeCalculation {
   display: flex;

@@ -1,7 +1,7 @@
 export enum RouteIndexes {
   HomePage,
   Transactions,
-  Overview,
+  MyCards,
   User,
 }
 
@@ -12,7 +12,7 @@ export type RouteObj = {
 export const ConstructedRouteIndexes: RouteObj = {
   [RouteIndexes.HomePage]: "/",
   [RouteIndexes.Transactions]: "/transactions",
-  [RouteIndexes.Overview]: "/overview",
+  [RouteIndexes.MyCards]: "/cards",
   [RouteIndexes.User]: "/user",
 };
 

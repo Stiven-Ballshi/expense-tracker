@@ -1,17 +1,13 @@
-import IconUpOrDownComponent from "./IconUpOrDownComponent";
 import "../../App.css";
+import CardComponent from "../Card/CardComponent";
 
 function HomepageCard() {
   return (
-    <div className="homepageCard">
-      <p className="balanceTitle">Total Balance</p>
-      <p className="balanceNumber">$3,257.00</p>
-
-      <div className="outcomeCalculation">
-        <IconUpOrDownComponent isIncome category="Income" />
-        <IconUpOrDownComponent isExpense category="Expense" />
-      </div>
-    </div>
+    <CardComponent
+      gradient="linear-gradient(to right top, #8736f6, #cc00cd, #ef00a3, #fe007c, #ff355c, #fc613e, #ee8527, #daa323, #b7c246, #91da7c, #6dedb9, #5ffbf1)"
+      isCardsPage={false}
+      balanceName="Total Balance"
+    />
   );
 }
 

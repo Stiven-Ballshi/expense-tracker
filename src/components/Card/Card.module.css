@@ -1,0 +1,39 @@
+.homepageCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  font-size: 2.5rem;
+  border-radius: 20px;
+  color: white;
+  font-weight: 300;
+  row-gap: 3rem;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  row-gap: 3rem;
+}
+
+.svgIcon { 
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  transform: translate(-10%,-10%);
+}
+
+.cardHolderInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.cardNumber {
+  letter-spacing: 0.7px;
+}
+
+.cardName {
+  font-size: 1.6rem;
+}

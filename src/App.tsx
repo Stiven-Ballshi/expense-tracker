@@ -13,7 +13,7 @@ import "./App.css";
 import "./index.css";
 import { styled } from "@mui/material";
 import TransactionsPage from "./pages/Transactions/TransactionsPage";
-import OverviewPage from "./pages/Overview/OverviewPage";
+import MyCardsPage from "./pages/MyCards/MyCardsPage";
 
 export const StyledOuterAppDiv = styled("div")({
   position: "relative",
@@ -34,7 +34,7 @@ function App() {
         <Route path="*" element={<ErrorPage />}></Route>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/transactions" element={<TransactionsPage />} />
-        <Route path="/overview" element={<OverviewPage />} />
+        <Route path="/cards" element={<MyCardsPage />} />
         <Route path="/user" element={<UserPage />} />
         {/* <Route path="/transaction" element={<TransactionsPage />} /> */}
       </Routes>
