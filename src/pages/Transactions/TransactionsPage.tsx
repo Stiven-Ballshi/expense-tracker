@@ -1,5 +1,5 @@
-import OverviewHeader from "../../components/Transactions/OverviewHeader";
-import OverviewTabs from "../../components/Transactions/OverviewTabs";
+import OverviewHeader from "../../components/Transactions/TransactionHeader";
+import OverviewTabs from "../../components/Transactions/TransactionTabs";
 
 type Props = {};
 

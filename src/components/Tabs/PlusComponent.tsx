@@ -1,47 +1,35 @@
-import { IconButton, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 export const StyledAddDiv = styled("div")({
   borderRadius: "50%",
   background: "#8736f6",
-  width: "80%",
-  height: "80%",
+  width: "100%",
+  height: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   svg: {
-    width: "1.9em",
-    height: "1.9em",
+    width: "2.3rem",
+    height: "2.3rem",
     color: "white",
   },
 });
 
-export const StyledOuterAddDiv = styled("div")<{ isSafari?: boolean }>(
-  (prop) => ({
-    position: "absolute",
-    bottom: prop.isSafari ? "10%" : "0%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    filter: "drop-shadow(0px 10px 10px #8736f6)",
-    borderRadius: "50%",
-    width: "70px",
-    height: "70px",
-    zIndex: "10000",
-  })
-);
+export const StyledOuterAddDiv = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  width: "30px",
+  height: "30px",
+});
 
 function PlusComponent() {
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
   return (
-    <StyledOuterAddDiv isSafari={isSafari}>
+    <StyledOuterAddDiv>
       <StyledAddDiv>
-        <IconButton>
-          <AddIcon />
-        </IconButton>
+        <AddIcon />
       </StyledAddDiv>
     </StyledOuterAddDiv>
   );

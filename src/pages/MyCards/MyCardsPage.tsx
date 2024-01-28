@@ -1,4 +1,5 @@
 import CardComponent from "../../components/Card/CardComponent";
+import { isSafari } from "../../utility";
 
 function MyCardsPage() {
   return (
@@ -10,7 +11,7 @@ function MyCardsPage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "calc(100vh - 25vh)",
+        height: isSafari ? "calc(100vh - 28vh)" : "calc(100vh - 20vh)",
         rowGap: "20px",
         overflowY: "auto",
       }}

@@ -18,7 +18,9 @@ export const ConstructedRouteIndexes: RouteObj = {
 
 export type TTransactions = {
   name: string;
+  avatar: string;
+  id: string;
   time: string;
-  trans: string[];
+  trans: string;
   type: string;
 };

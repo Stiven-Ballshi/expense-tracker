@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
 import styles from "./Header.module.css";
 import TransactionComponent from "./TransactionComponent";
-import { TTransactions } from "../../types";
+import { useTransaction } from "../hooks/useTransaction";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,26 +31,7 @@ function TabPanel(props: TabPanelProps) {
 
 function OverviewTabs() {
   const [value, setValue] = useState(0);
-
-  const [incomes, setIncomes] = useState<TTransactions[]>(
-    new Array(10).fill({
-      name: "Stiven",
-      time: "10:02AM",
-      trans: "450",
-      type: "income",
-    })
-  );
-
-  const [expenses, setExpenses] = useState<TTransactions[]>(
-    new Array(10).fill({
-      name: "Endrit",
-      time: "10:02AM",
-      trans: "350",
-      type: "expense",
-    })
-  );
-
-  console.log(setExpenses, setIncomes);
+  const { incomes, expenses } = useTransaction();
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -105,10 +86,10 @@ function OverviewTabs() {
         />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <TransactionComponent overview transactions={incomes} />
+        <TransactionComponent vh="53vh" overview transactions={incomes} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TransactionComponent overview transactions={expenses} />
+        <TransactionComponent vh="53vh" overview transactions={expenses} />
       </TabPanel>
     </div>
   );

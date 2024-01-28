@@ -4,46 +4,58 @@ import { TTransactions } from "../../types";
 import { styled } from "@mui/material";
 
 type TProps = {
-  transactions: TTransactions[];
+  transactions?: TTransactions[];
   overview?: Boolean;
+  vh?: string | undefined;
 };
 
-export const CustomTransactionsDiv = styled("div")<{ isSafari?: boolean }>(
-  (prop) => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "start",
-    justifyContent: "center",
-    rowGap: "2rem",
-    height: prop.isSafari ? "35vh" : "45vh",
-    scrollBehavior: "smooth",
-    overflowY: "auto",
-  })
-);
+export const CustomTransactionsDiv = styled("div")<{
+  isSafari?: boolean;
+  vh: string;
+}>((prop) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "start",
+  justifyContent: "center",
+  rowGap: "2rem",
+  height: prop.isSafari ? "35vh" : prop.vh,
+  scrollBehavior: "smooth",
+  overflowY: "auto",
+}));
 
-function TransactionComponent({ transactions, overview }: TProps) {
+function TransactionComponent({ transactions, overview, vh = "" }: TProps) {
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   return (
     <>
-      <div className="transactionsHeader">
-        {overview ? null : (
+      {overview ? (
+        <></>
+      ) : (
+        <div className="transactionsHeader">
           <>
             <span className="tranName">Transactions</span>
             <button className="seeAll">See All</button>
           </>
-        )}
-      </div>
+        </div>
+      )}
 
-      <CustomTransactionsDiv isSafari={isSafari} className="transactions">
-        {transactions.map((tr: TTransactions, index: number) => {
+      <CustomTransactionsDiv
+        isSafari={isSafari}
+        vh={vh ? vh : "35vh"}
+        className="transactions"
+      >
+        {transactions?.map((tr: TTransactions, index: number) => {
           return (
             <div key={index} className="transaction">
               <div className="transactionLeft">
                 <Stack direction="row" spacing={2}>
                   <Avatar
                     alt="Remy Sharp"
-                    src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                    src={
+                      tr.avatar
+                        ? tr.avatar
+                        : "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                    }
                   />
                 </Stack>
 

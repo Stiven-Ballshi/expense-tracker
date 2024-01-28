@@ -1,14 +1,15 @@
 import TransactionComponent from "../Transactions/TransactionComponent";
-import { TTransactions } from "../../types";
+import { useTransaction } from "../hooks/useTransaction";
 
-type Props = {
-  transactions: TTransactions[];
-};
-
-function HomepageTransactions({ transactions }: Props) {
+function HomepageTransactions() {
+  const { transactions } = useTransaction();
   return (
     <div className="transactionsContainer">
-      <TransactionComponent overview={false} transactions={transactions} />
+      <TransactionComponent
+        transactions={transactions}
+        overview={false}
+        vh="42vh"
+      />
     </div>
   );
 }

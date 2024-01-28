@@ -1,13 +1,14 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import { IconButton } from "@mui/material";
+// import BadgeComponent from "./Homepage/BadgeComponent";
+import PlusComponent from "./Tabs/PlusComponent";
 
-import BadgeComponent from "./Homepage/BadgeComponent";
-import { useLocation } from "react-router-dom";
 import "../App.css";
 
 function HomepageHeader() {
   const location = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const getCurrentUrl = location.pathname.replace("/", "");
 
@@ -25,13 +26,16 @@ function HomepageHeader() {
         {getCurrentUrl || "Homepage"}
       </span>
 
-      {getCurrentUrl === "" ? (
+      {/* {getCurrentUrl === "" ? (
         <IconButton>
           <BadgeComponent />
         </IconButton>
       ) : (
         <div style={{ width: "50px", height: "50px" }}></div>
-      )}
+      )} */}
+      <IconButton onClick={() => navigate("/add")}>
+        <PlusComponent />
+      </IconButton>
     </div>
   );
 }
