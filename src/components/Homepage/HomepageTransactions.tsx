@@ -5,11 +5,7 @@ function HomepageTransactions() {
   const { transactions } = useTransaction();
   return (
     <div className="transactionsContainer">
-      <TransactionComponent
-        transactions={transactions}
-        overview={false}
-        vh="42vh"
-      />
+      <TransactionComponent transactions={transactions} vh="42vh" />
     </div>
   );
 }

@@ -6,5 +6,6 @@ export const StyledButton = styled(Button)<{ buttonType: string }>((prop) => ({
   display: "flex",
   flexDirection: "column",
   width: "100%",
+  padding: "10px",
   color: prop.theme.palette.text.primary,
 }));

@@ -1,5 +1,4 @@
 html {
-  font-family: "Proxima Nova", system-ui, sans-serif;
   background: #fafafc;
 }
 
@@ -26,8 +25,6 @@ html {
   font-weight: bold;
   padding: 2rem;
 }
-
-
 
 .outcomeCalculation {
   display: flex;
@@ -92,7 +89,7 @@ html {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0px 10px;
+  /* padding: 0px 10px; */
 }
 
 .transactionLeft {

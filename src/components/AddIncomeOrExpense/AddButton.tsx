@@ -1,16 +1,17 @@
 import { useTheme } from "@mui/material";
-import { StyledButton } from "./Button.styled";
 import PaymentIcon from "@mui/icons-material/Payment";
+import { StyledButton } from "./Button.styled";
 
 type Props = {
   type: string;
   title: string;
+  onClick: () => void;
 };
 
-function AddButton({ type, title }: Props) {
+function AddButton({ type, title, onClick }: Props) {
   const theme = useTheme();
   return (
-    <StyledButton buttonType={type}>
+    <StyledButton onClick={onClick} buttonType={type}>
       <PaymentIcon
         htmlColor={
           type === "income"
@@ -21,8 +22,8 @@ function AddButton({ type, title }: Props) {
       <span
         style={{
           fontWeight: "500",
-          letterSpacing: "1.2px",
-          fontSize: "1.8rem",
+          letterSpacing: "0.5px",
+          fontSize: "1.7rem",
         }}
       >
         {title}

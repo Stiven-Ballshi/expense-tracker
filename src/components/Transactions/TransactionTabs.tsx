@@ -86,10 +86,10 @@ function OverviewTabs() {
         />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <TransactionComponent vh="53vh" overview transactions={incomes} />
+        <TransactionComponent vh="53vh" transaction transactions={incomes} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TransactionComponent vh="53vh" overview transactions={expenses} />
+        <TransactionComponent vh="53vh" transaction transactions={expenses} />
       </TabPanel>
     </div>
   );

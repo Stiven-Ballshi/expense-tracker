@@ -5,30 +5,32 @@ import { styled } from "@mui/material";
 
 type TProps = {
   transactions?: TTransactions[];
-  overview?: Boolean;
+  transaction?: Boolean;
   vh?: string | undefined;
 };
 
 export const CustomTransactionsDiv = styled("div")<{
-  isSafari?: boolean;
+  isSafari?: Boolean;
   vh: string;
+  hasMargin: Boolean;
 }>((prop) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "start",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   rowGap: "2rem",
   height: prop.isSafari ? "35vh" : prop.vh,
   scrollBehavior: "smooth",
   overflowY: "auto",
+  marginTop: prop.hasMargin ? "20px" : "0",
 }));
 
-function TransactionComponent({ transactions, overview, vh = "" }: TProps) {
+function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   return (
     <>
-      {overview ? (
+      {transaction ? (
         <></>
       ) : (
         <div className="transactionsHeader">
@@ -41,8 +43,9 @@ function TransactionComponent({ transactions, overview, vh = "" }: TProps) {
 
       <CustomTransactionsDiv
         isSafari={isSafari}
-        vh={vh ? vh : "35vh"}
+        vh={vh}
         className="transactions"
+        hasMargin={transaction || false}
       >
         {transactions?.map((tr: TTransactions, index: number) => {
           return (
