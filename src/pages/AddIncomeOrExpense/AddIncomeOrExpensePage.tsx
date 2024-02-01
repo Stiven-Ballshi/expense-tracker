@@ -13,7 +13,7 @@ export const AddPageContainer = styled("div")({
 });
 
 function AddIncomeOrExpensePage() {
-  const { transactions } = useTransaction();
+  const { incomes, expenses, TransactionsHistory } = useTransaction();
   const navigate = useNavigate();
 
   return (
@@ -30,7 +30,10 @@ function AddIncomeOrExpensePage() {
           type="expense"
         />
       </div>
-      <TransactionComponent vh="63vh" transactions={transactions} />
+      <TransactionComponent
+        vh="63vh"
+        transactions={TransactionsHistory(incomes, expenses)}
+      />
     </AddPageContainer>
   );
 }

@@ -19,7 +19,7 @@ function HomepageHeader() {
   return (
     <div className="homepageContainer">
       {getCurrentUrl.includes("add") ? (
-        <IconButton onClick={() => navigate("/")}>
+        <IconButton onClick={() => navigate(-1)}>
           <ArrowBackIosIcon />
         </IconButton>
       ) : (

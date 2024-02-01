@@ -1,10 +1,10 @@
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { TTransactions } from "../../types";
+// import Avatar from "@mui/material/Avatar";
+// import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material";
+import { TransactionProps } from "../../types";
 
 type TProps = {
-  transactions?: TTransactions[];
+  transactions?: TransactionProps[];
   transaction?: Boolean;
   vh?: string | undefined;
 };
@@ -47,11 +47,11 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
         className="transactions"
         hasMargin={transaction || false}
       >
-        {transactions?.map((tr: TTransactions, index: number) => {
+        {transactions?.map((tr: TransactionProps, index: number) => {
           return (
             <div key={index} className="transaction">
               <div className="transactionLeft">
-                <Stack direction="row" spacing={2}>
+                {/* <Stack direction="row" spacing={2}>
                   <Avatar
                     alt="Remy Sharp"
                     src={
@@ -60,10 +60,10 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
                         : "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
                     }
                   />
-                </Stack>
+                </Stack> */}
 
                 <div className="transInfo">
-                  <span className="tranName">{tr.name}</span>
+                  <span className="tranName">{tr.title}</span>
                   <span className="tranTime">{tr.time}</span>
                 </div>
               </div>
@@ -72,7 +72,7 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
                 style={{ color: tr.type === "income" ? "green" : "red" }}
               >
                 {tr.type === "income" ? "+$" : "-$"}
-                {tr.trans}
+                {tr.amount}
               </span>
             </div>
           );

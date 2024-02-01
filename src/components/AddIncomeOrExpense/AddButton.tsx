@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import PaymentIcon from "@mui/icons-material/Payment";
-import { StyledButton } from "./Button.styled";
+import { StyledButton } from "./Button.styled.tsx";
 
 type Props = {
   type: string;

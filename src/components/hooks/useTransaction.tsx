@@ -1,41 +1,36 @@
 import { useState } from "react";
-import { TTransactions } from "../../types";
 import { faker } from "@faker-js/faker";
+import { TransactionProps } from "../../types";
+import { getCurrentTime, shuffleArray } from "../../utility";
 
 export const useTransaction = () => {
-  type TUserTransaction = {
-    name: string;
-    id: string;
-    avatar: string;
-    time: string;
-    trans: string;
-    type: string;
-  };
-
-  const generateTransaction = (type?: string): TUserTransaction => {
+  const generateTransaction = (type?: string): TransactionProps => {
     return {
-      name: faker.person.firstName(),
+      title: faker.person.firstName(),
       id: faker.string.uuid(),
-      avatar: faker.image.avatar(),
-      time: "10:02AM",
-      trans: "450",
+      time: getCurrentTime(),
+      amount: faker.number.int({ max: 1000 }),
       type: type === "expense" ? "expense" : "income",
+      category: "money_transfer",
     };
   };
 
-  const [transactions, setTransactions] = useState<TTransactions[]>(
+  const TransactionsHistory = (
+    incomes: TransactionProps[],
+    expenses: TransactionProps[]
+  ) => {
+    return shuffleArray([...incomes, ...expenses]);
+  };
+
+  const [incomes, setIncomes] = useState<TransactionProps[]>(
     new Array(10).fill(0).map((_) => generateTransaction())
   );
 
-  const [incomes, setIncomes] = useState<TTransactions[]>(
-    new Array(10).fill(0).map((_) => generateTransaction())
-  );
-
-  const [expenses, setExpenses] = useState<TTransactions[]>(
+  const [expenses, setExpenses] = useState<TransactionProps[]>(
     new Array(10).fill(0).map((_) => generateTransaction("expense"))
   );
 
-  console.log(setExpenses, setIncomes, setTransactions);
+  console.log(setExpenses, setIncomes);
 
-  return { expenses, transactions, incomes };
+  return { expenses, incomes, TransactionsHistory };
 };

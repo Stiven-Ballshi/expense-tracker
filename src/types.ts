@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export enum RouteIndexes {
   HomePage,
   Transactions,
@@ -16,11 +18,19 @@ export const ConstructedRouteIndexes: RouteObj = {
   [RouteIndexes.User]: "/user",
 };
 
-export type TTransactions = {
-  name: string;
-  avatar: string;
+type ExpenseCategory = 'bill' | 'subscription'
+type IncomeCategory = 'salary' | 'money_transfer'
+
+export type TransactionProps = {
+  title: string;
   id: string;
+  type: 'expense' | 'income';
   time: string;
-  trans: string;
-  type: string;
-};
+  category: ExpenseCategory | IncomeCategory;
+  amount: string | number;
+  icon?: ReactNode;
+}
+
+// const IconsMap = {
+
+// };
