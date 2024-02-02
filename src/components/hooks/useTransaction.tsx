@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { faker } from "@faker-js/faker";
-import { TransactionProps } from "../../types";
+import { TransactionProps } from "../../types/types";
 import { getCurrentTime, shuffleArray } from "../../utility";
 
 export const useTransaction = () => {
@@ -11,7 +11,7 @@ export const useTransaction = () => {
       time: getCurrentTime(),
       amount: faker.number.int({ max: 1000 }),
       type: type === "expense" ? "expense" : "income",
-      category: "money_transfer",
+      category: "salary",
     };
   };
 

@@ -6,7 +6,7 @@ import StackedBarChartIcon from "@mui/icons-material/StackedBarChart";
 
 import { NavigationTabs, StyledTabs } from "./Tabs.styled";
 import { useNavigate } from "react-router-dom";
-import { ConstructedRouteIndexes, RouteObj } from "../../types";
+import { ConstructedRouteIndexes, RouteObj } from "../../types/types";
 import "../../App.css";
 
 export default function MainTabs() {

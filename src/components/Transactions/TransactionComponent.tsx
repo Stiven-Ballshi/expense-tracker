@@ -1,7 +1,8 @@
 // import Avatar from "@mui/material/Avatar";
 // import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material";
-import { TransactionProps } from "../../types";
+import { Box, styled } from "@mui/material";
+import { TransactionProps } from "../../types/types";
+import { icons } from "../../constants/iconsMap";
 
 type TProps = {
   transactions?: TransactionProps[];
@@ -51,16 +52,17 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
           return (
             <div key={index} className="transaction">
               <div className="transactionLeft">
-                {/* <Stack direction="row" spacing={2}>
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={
-                      tr.avatar
-                        ? tr.avatar
-                        : "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
-                    }
-                  />
-                </Stack> */}
+                <Box
+                  sx={{
+                    background: icons[tr.type][tr.category].background,
+                    padding: "2px",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {icons[tr.type][tr.category].icon ?? null}
+                </Box>
 
                 <div className="transInfo">
                   <span className="tranName">{tr.title}</span>

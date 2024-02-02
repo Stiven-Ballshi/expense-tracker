@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+
 export enum RouteIndexes {
   HomePage,
   Transactions,
@@ -31,6 +32,21 @@ export type TransactionProps = {
   icon?: ReactNode;
 }
 
-// const IconsMap = {
 
-// };
+
+export type Icon = {
+  expense: {
+    [key: string]: {
+      name: string;
+      icon: ReactNode;
+      background: string;
+    }
+  }
+  income: {
+    [key: string]: {
+      name: string;
+      icon: ReactNode;
+      background: string;
+    }
+  }
+};

@@ -10,6 +10,7 @@ import {
   Box,
 } from "@mui/material";
 import { CustomFormControl, InputDiv } from "./Input.style";
+import CheckboxComponent from "../../components/AddIncomeOrExpense/CheckboxComponent";
 // import { faker } from "@faker-js/faker";
 
 function AddTransactionType() {
@@ -82,6 +83,7 @@ function AddTransactionType() {
               />
             </InputDiv>
           </Box>
+          <CheckboxComponent type={type ?? "income"} />
           <Button
             fullWidth
             variant="outlined"
