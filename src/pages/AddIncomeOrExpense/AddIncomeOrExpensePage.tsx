@@ -4,7 +4,6 @@ import { styled } from "@mui/material";
 
 import AddButton from "../../components/AddIncomeOrExpense/AddButton";
 import TransactionComponent from "../../components/Transactions/TransactionComponent";
-import { useTransaction } from "../../components/hooks/useTransaction";
 
 import styles from "./Page.module.css";
 
@@ -13,7 +12,6 @@ export const AddPageContainer = styled("div")({
 });
 
 function AddIncomeOrExpensePage() {
-  const { incomes, expenses, TransactionsHistory } = useTransaction();
   const navigate = useNavigate();
 
   return (
@@ -30,10 +28,7 @@ function AddIncomeOrExpensePage() {
           type="expense"
         />
       </div>
-      <TransactionComponent
-        vh="63vh"
-        transactions={TransactionsHistory(incomes, expenses)}
-      />
+      <TransactionComponent lsKey="transactions" vh="63vh" />
     </AddPageContainer>
   );
 }

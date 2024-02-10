@@ -19,8 +19,8 @@ export const ConstructedRouteIndexes: RouteObj = {
   [RouteIndexes.User]: "/user",
 };
 
-type ExpenseCategory = 'bill' | 'subscription'
-type IncomeCategory = 'salary' | 'money_transfer'
+export type ExpenseCategory = 'bill' | 'subscription'
+export type IncomeCategory = 'salary' | 'money_transfer'
 
 export type TransactionProps = {
   title: string;
@@ -29,20 +29,17 @@ export type TransactionProps = {
   time: string;
   category: ExpenseCategory | IncomeCategory;
   amount: string | number;
-  icon?: ReactNode;
+  icon?: { name: string, background: string}
 }
 
-
+export type CheckboxTypeValueMapProps = {
+  name: string;
+  key: string;
+  selected: boolean;
+}[];
 
 export type Icon = {
-  expense: {
-    [key: string]: {
-      name: string;
-      icon: ReactNode;
-      background: string;
-    }
-  }
-  income: {
+  [key: string]: {
     [key: string]: {
       name: string;
       icon: ReactNode;

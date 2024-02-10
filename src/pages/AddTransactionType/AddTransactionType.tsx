@@ -1,6 +1,6 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
   Button,
@@ -11,22 +11,58 @@ import {
 } from "@mui/material";
 import { CustomFormControl, InputDiv } from "./Input.style";
 import CheckboxComponent from "../../components/AddIncomeOrExpense/CheckboxComponent";
-// import { faker } from "@faker-js/faker";
+import {
+  ExpenseCategory,
+  IncomeCategory,
+  TransactionProps,
+} from "../../types/types";
+import { faker } from "@faker-js/faker";
+import { checkboxValueMap } from "../../constants/selectMap";
+import { useTransaction } from "../../components/hooks/useTransaction";
+import { useLocalStorage } from "../../components/hooks/useLocalStorage";
 
 function AddTransactionType() {
+  const navigate = useNavigate();
   const { type } = useParams();
-  // const [initialValues, setInitialValues] = useState<TUserTransaction>({
-  //   name: "",
-  //   id: faker.string.uuid(),
-  //   avatar: faker.image.avatar(),
-  //   time: new Date().getTime().toString(),
-  //   trans: "",
-  //   type: type as string,
-  // });
+  const { setExpenses, setIncomes } = useTransaction();
+  const { setItemToLs, getItemFromLS } = useLocalStorage(type as string);
+
+  const [checkboxValues, setCheckboxValues] = useState(checkboxValueMap);
+  const [initialValues, setInitialValues] = useState<TransactionProps>({
+    title: "",
+    id: faker.string.uuid(),
+    icon: undefined,
+    time: new Date().getTime().toString(),
+    amount: "",
+    type: type as "expense" | "income",
+    category: "bill",
+  });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const selectedCategory = checkboxValues.find((obj) => obj.selected);
+    const transactionData = {
+      ...initialValues,
+      category: selectedCategory?.key as ExpenseCategory | IncomeCategory,
+    };
+
+    if (type === "expense") {
+      setExpenses((prevExpenses: TransactionProps[]) => [
+        ...prevExpenses,
+        transactionData,
+      ]);
+    } else if (type === "income") {
+      setIncomes((prevExpenses: TransactionProps[]) => [
+        ...prevExpenses,
+        transactionData,
+      ]);
+    }
+
+    setItemToLs([...(getItemFromLS() ?? []), transactionData]);
+
+    navigate("/");
   };
+
   return (
     <>
       <form
@@ -49,7 +85,16 @@ function AddTransactionType() {
                 {type} title
               </span>
               <TextField
+                value={initialValues.title}
                 autoFocus
+                onChange={(e) => {
+                  const newValue = e.target.value;
+
+                  setInitialValues((prevValues) => ({
+                    ...prevValues,
+                    title: newValue,
+                  }));
+                }}
                 color={type === "income" ? "primary" : "secondary"}
                 sx={{
                   "& .MuiInputBase-input": {
@@ -66,6 +111,7 @@ function AddTransactionType() {
             <InputDiv>
               <span style={{ marginBottom: "10px" }}>Amount</span>
               <OutlinedInput
+                inputProps={{ min: 1, max: 1000000 }}
                 inputMode="numeric"
                 type="number"
                 color={type === "income" ? "primary" : "secondary"}
@@ -76,14 +122,27 @@ function AddTransactionType() {
                     fontSize: "2rem",
                   },
                 }}
+                onChange={(e) => {
+                  const newValue = e.target.value;
+                  setInitialValues((prevValues) => ({
+                    ...prevValues,
+                    amount: newValue,
+                  }));
+                }}
                 id="outlined-adornment-amount"
                 startAdornment={
                   <InputAdornment position="start">$</InputAdornment>
                 }
               />
             </InputDiv>
+
+            <CheckboxComponent
+              checkboxValues={checkboxValues}
+              setCheckboxValues={setCheckboxValues}
+              type={type ?? "income"}
+            />
           </Box>
-          <CheckboxComponent type={type ?? "income"} />
+
           <Button
             fullWidth
             variant="outlined"

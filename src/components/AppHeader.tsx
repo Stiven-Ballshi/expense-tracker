@@ -8,7 +8,7 @@ import PlusComponent from "./Tabs/PlusComponent";
 
 import "../App.css";
 
-function HomepageHeader() {
+function AppHeader() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ function HomepageHeader() {
         {getCurrentUrl === "/" ? "Homepage" : formatedUrl}
       </span>
 
-      {getCurrentUrl.includes("add") ? (
+      {getCurrentUrl !== "/" ? (
         <div style={{ width: "50px", height: "50px" }}></div>
       ) : (
         <IconButton onClick={() => navigate("/add")}>
@@ -46,4 +46,4 @@ function HomepageHeader() {
   );
 }
 
-export default HomepageHeader;
+export default AppHeader;

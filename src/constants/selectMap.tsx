@@ -1,18 +1,24 @@
-export const checkboxValueMap: { name: string; selected: boolean }[] = [
+import { CheckboxTypeValueMapProps } from "../types/types";
+
+export const checkboxValueMap: CheckboxTypeValueMapProps = [
   {
-    name: "bill",
+    key: "bill",
+    name: "Bill",
     selected: false,
   },
   {
-    name: "salary",
+    key: "salary",
+    name: "Salary",
     selected: false,
   },
   {
-    name: "money_transfer",
+    key: "money_transfer",
+    name: "Transfer",
     selected: false,
   },
   {
-    name: "subscription",
+    key: "subscription",
+    name: "Subscription",
     selected: false,
   },
 ];

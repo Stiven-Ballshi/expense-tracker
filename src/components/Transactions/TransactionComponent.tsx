@@ -1,13 +1,14 @@
-// import Avatar from "@mui/material/Avatar";
-// import Stack from "@mui/material/Stack";
 import { Box, styled } from "@mui/material";
 import { TransactionProps } from "../../types/types";
 import { icons } from "../../constants/iconsMap";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+import EmptyStateComponent from "../EmtpyStateComponent";
 
 type TProps = {
   transactions?: TransactionProps[];
   transaction?: Boolean;
   vh?: string | undefined;
+  lsKey: string;
 };
 
 export const CustomTransactionsDiv = styled("div")<{
@@ -26,7 +27,8 @@ export const CustomTransactionsDiv = styled("div")<{
   marginTop: prop.hasMargin ? "20px" : "0",
 }));
 
-function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
+function TransactionComponent({ transaction, vh = "", lsKey }: TProps) {
+  const { getItemFromLS } = useLocalStorage(lsKey);
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   return (
@@ -48,7 +50,7 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
         className="transactions"
         hasMargin={transaction || false}
       >
-        {transactions?.map((tr: TransactionProps, index: number) => {
+        {getItemFromLS()?.map((tr: TransactionProps, index: number) => {
           return (
             <div key={index} className="transaction">
               <div className="transactionLeft">
@@ -61,7 +63,7 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
                     alignItems: "center",
                   }}
                 >
-                  {icons[tr.type][tr.category].icon ?? null}
+                  {icons[tr?.type][tr?.category].icon ?? null}
                 </Box>
 
                 <div className="transInfo">
@@ -78,7 +80,7 @@ function TransactionComponent({ transactions, transaction, vh = "" }: TProps) {
               </span>
             </div>
           );
-        })}
+        }) ?? <EmptyStateComponent />}
       </CustomTransactionsDiv>
     </>
   );
