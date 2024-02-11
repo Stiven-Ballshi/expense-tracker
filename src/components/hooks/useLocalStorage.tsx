@@ -7,9 +7,9 @@ export const useLocalStorage = (key: string) => {
     }
   };
 
-  const getItemFromLS = () => {
+  const getItemFromLS = (customKey?: string) => {
     try {
-      const item = window.localStorage.getItem(key);
+      const item = localStorage.getItem(key ? key : (customKey as string));
       return item ? JSON.parse(item) : null;
     } catch (error) {
       // console.log(error);
