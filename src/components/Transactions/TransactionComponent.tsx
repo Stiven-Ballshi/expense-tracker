@@ -48,18 +48,16 @@ function TransactionComponent({
   });
 
   useEffect(() => {
-    if (lsObject) {
-      const newTransaction = [];
-      for (let key in lsObject) {
-        if (lsObject.hasOwnProperty(key)) {
-          var value = lsObject[key];
-          if (Array.isArray(value)) {
-            newTransaction.push(...value);
-          }
+    let newTransactions: TransactionProps[] = [];
+    for (let key in lsObject) {
+      if (lsObject.hasOwnProperty(key)) {
+        var value = lsObject[key];
+        if (Array.isArray(value)) {
+          newTransactions = [...newTransactions, ...value];
         }
       }
-      setTransactions(newTransaction);
     }
+    setTransactions(newTransactions);
   }, []);
 
   return (
@@ -68,10 +66,12 @@ function TransactionComponent({
         <></>
       ) : (
         <div className="transactionsHeader">
-          <>
-            <span className="tranName">Transactions</span>
-            <button className="seeAll">See All</button>
-          </>
+          {transactions.length === 0 ? null : (
+            <>
+              <span className="tranName">Transactions</span>
+              <button className="seeAll">See All</button>
+            </>
+          )}
         </div>
       )}
 
@@ -81,69 +81,73 @@ function TransactionComponent({
         className="transactions"
         hasMargin={transaction || false}
       >
-        {homepage
-          ? transactions?.map((tr: TransactionProps, index: number) => {
-              return (
-                <div key={index} className="transaction">
-                  <div className="transactionLeft">
-                    <Box
-                      sx={{
-                        background: icons[tr.type][tr.category].background,
-                        padding: "2px",
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      {icons[tr?.type][tr?.category].icon ?? null}
-                    </Box>
-
-                    <div className="transInfo">
-                      <span className="tranName">{tr.title}</span>
-                      <span className="tranTime">{tr.time}</span>
-                    </div>
-                  </div>
-                  <span
-                    className="tranAmount"
-                    style={{ color: tr.type === "income" ? "green" : "red" }}
+        {!transactions.length ? (
+          <EmptyStateComponent />
+        ) : homepage ? (
+          transactions?.map((tr: TransactionProps, index: number) => {
+            return (
+              <div key={index} className="transaction">
+                <div className="transactionLeft">
+                  <Box
+                    sx={{
+                      background: icons[tr.type][tr.category].background,
+                      padding: "2px",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
                   >
-                    {tr.type === "income" ? "+$" : "-$"}
-                    {tr.amount}
-                  </span>
-                </div>
-              );
-            }) ?? <EmptyStateComponent />
-          : getItemFromLS()?.map((tr: TransactionProps, index: number) => {
-              return (
-                <div key={index} className="transaction">
-                  <div className="transactionLeft">
-                    <Box
-                      sx={{
-                        background: icons[tr.type][tr.category].background,
-                        padding: "2px",
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      {icons[tr?.type][tr?.category].icon ?? null}
-                    </Box>
+                    {icons[tr?.type][tr?.category].icon ?? null}
+                  </Box>
 
-                    <div className="transInfo">
-                      <span className="tranName">{tr.title}</span>
-                      <span className="tranTime">{tr.time}</span>
-                    </div>
+                  <div className="transInfo">
+                    <span className="tranName">{tr.title}</span>
+                    <span className="tranTime">{tr.time}</span>
                   </div>
-                  <span
-                    className="tranAmount"
-                    style={{ color: tr.type === "income" ? "green" : "red" }}
-                  >
-                    {tr.type === "income" ? "+$" : "-$"}
-                    {tr.amount}
-                  </span>
                 </div>
-              );
-            }) ?? <EmptyStateComponent />}
+                <span
+                  className="tranAmount"
+                  style={{ color: tr.type === "income" ? "green" : "red" }}
+                >
+                  {tr.type === "income" ? "+$" : "-$"}
+                  {tr.amount}
+                </span>
+              </div>
+            );
+          })
+        ) : (
+          getItemFromLS()?.map((tr: TransactionProps, index: number) => {
+            return (
+              <div key={index} className="transaction">
+                <div className="transactionLeft">
+                  <Box
+                    sx={{
+                      background: icons[tr.type][tr.category].background,
+                      padding: "2px",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    {icons[tr?.type][tr?.category].icon ?? null}
+                  </Box>
+
+                  <div className="transInfo">
+                    <span className="tranName">{tr.title}</span>
+                    <span className="tranTime">{tr.time}</span>
+                  </div>
+                </div>
+                <span
+                  className="tranAmount"
+                  style={{ color: tr.type === "income" ? "green" : "red" }}
+                >
+                  {tr.type === "income" ? "+$" : "-$"}
+                  {tr.amount}
+                </span>
+              </div>
+            );
+          })
+        )}
       </CustomTransactionsDiv>
     </>
   );
