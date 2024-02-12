@@ -24,6 +24,9 @@ const theme = createTheme({
     primary: {
       main: "#8736f6", 
     },
+    info: {
+      main: '#fff'
+    },
     secondary: {
       main: "#ff6c39", 
     },
@@ -36,7 +39,7 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: 'Switzer',
     fontSize: 16,
   },
   components: {

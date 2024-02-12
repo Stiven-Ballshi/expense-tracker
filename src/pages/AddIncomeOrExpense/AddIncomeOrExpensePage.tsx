@@ -1,10 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
 import { styled } from "@mui/material";
-
 import AddButton from "../../components/AddIncomeOrExpense/AddButton";
-import TransactionComponent from "../../components/Transactions/TransactionComponent";
-
 import styles from "./Page.module.css";
 
 export const AddPageContainer = styled("div")({
@@ -28,7 +24,6 @@ function AddIncomeOrExpensePage() {
           type="expense"
         />
       </div>
-      <TransactionComponent lsKey="transactions" vh="63vh" />
     </AddPageContainer>
   );
 }

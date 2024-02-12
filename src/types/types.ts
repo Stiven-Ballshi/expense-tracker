@@ -1,23 +1,33 @@
 import { ReactNode } from "react";
 
-
-export enum RouteIndexes {
+//  Types for routes in the page
+export enum TabsRouteEnums {
   HomePage,
   Transactions,
   MyCards,
   User,
 }
 
-export type RouteObj = {
-  [key in RouteIndexes]: string;
+export type RouteObjType = {
+  [key in TabsRouteEnums]: string;
 };
 
-export const ConstructedRouteIndexes: RouteObj = {
-  [RouteIndexes.HomePage]: "/",
-  [RouteIndexes.Transactions]: "/transactions",
-  [RouteIndexes.MyCards]: "/cards",
-  [RouteIndexes.User]: "/user",
-};
+export enum UserPageEnum {
+  AccountInfo,
+  Notifications,
+  Logout
+}
+
+export type UserPageRouteType = {
+  [key in UserPageEnum] : {
+    name: string;
+    route: string;
+    background: string;
+    icon: ReactNode;
+  }
+}
+
+// Types for transactions, icons , checkboxes and other utilities
 
 export type ExpenseCategory = 'bill' | 'subscription'
 export type IncomeCategory = 'salary' | 'money_transfer'

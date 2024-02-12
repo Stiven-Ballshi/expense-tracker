@@ -1,3 +1,6 @@
+import UserHeader from "../../components/UserHeader/UserHeader";
+import UserMenu from "../../components/User/UserMenu";
+
 function UserPage() {
   return (
     <div
@@ -6,13 +9,13 @@ function UserPage() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
         height: "50vh",
         rowGap: "20px",
+        padding: "20px",
       }}
     >
-      <p>User page is not ready yet</p>
-      <p>Coming soon !</p>
+      <UserHeader />
+      <UserMenu />
     </div>
   );
 }

@@ -6,7 +6,9 @@ import StackedBarChartIcon from "@mui/icons-material/StackedBarChart";
 
 import { NavigationTabs, StyledTabs } from "./Tabs.styled";
 import { useNavigate } from "react-router-dom";
-import { ConstructedRouteIndexes, RouteObj } from "../../types/types";
+import { RouteObjType } from "../../types/types";
+
+import { ConstructedRouteIndexes } from "../../constants/tabsRouteMap";
 
 import "../../App.css";
 
@@ -19,7 +21,7 @@ export default function MainTabs() {
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
-    let currentTab = ConstructedRouteIndexes[newValue as keyof RouteObj];
+    let currentTab = ConstructedRouteIndexes[newValue as keyof RouteObjType];
     navigate(currentTab);
   };
 
