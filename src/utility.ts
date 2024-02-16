@@ -34,3 +34,20 @@ export const shuffleArray = (array: any[]) => {
 
   return array;
 }
+
+
+
+export const timestampConverter = (dateNumber: number) => {
+  const options = {  
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    hour: 'numeric', 
+    minute: 'numeric', 
+    hour12: true 
+  };
+
+   const date = new Date(dateNumber) 
+   const formattedDate = date.toLocaleTimeString('en-US', options as any)
+   return formattedDate;
+}

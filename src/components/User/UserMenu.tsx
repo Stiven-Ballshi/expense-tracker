@@ -4,8 +4,10 @@ import MenuList from "@mui/material/MenuList";
 import { UserPageRouteMap } from "../../constants/userpageRouteMap";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { LeftBox, UserIconSpan, UserMenuWrappers } from "./UserPage.styled";
+import { useNavigate } from "react-router-dom";
 
 function UserMenu() {
+  const navigate = useNavigate();
   return (
     <MenuList
       sx={{
@@ -16,12 +18,14 @@ function UserMenu() {
     >
       {Object.values(UserPageRouteMap).map((obj) => {
         return (
-          <UserMenuWrappers>
+          <UserMenuWrappers onClick={() => navigate(`${obj.route}`)}>
             <LeftBox>
               <UserIconSpan bgColor={obj.background}>{obj.icon}</UserIconSpan>
 
               <MenuItem>
-                <Typography variant="h4">{obj.name}</Typography>
+                <Typography color="" variant="h4">
+                  {obj.name}
+                </Typography>
               </MenuItem>
             </LeftBox>
 

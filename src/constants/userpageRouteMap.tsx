@@ -6,7 +6,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 export const UserPageRouteMap: UserPageRouteType = {
   [UserPageEnum.AccountInfo]: {
     name: "Account Info",
-    route: "/accountInfo",
+    route: "/account_info",
     icon: <PersonIcon color="info" fontSize="small" />,
     background: "#6249ff",
   },

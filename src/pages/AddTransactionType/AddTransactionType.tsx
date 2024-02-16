@@ -32,7 +32,7 @@ function AddTransactionType() {
     title: "",
     id: faker.string.uuid(),
     icon: undefined,
-    time: new Date().getTime().toString(),
+    time: new Date().getTime(),
     amount: "",
     type: type as "expense" | "income",
     category: "bill",

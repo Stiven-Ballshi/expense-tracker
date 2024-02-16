@@ -5,7 +5,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import EmptyStateComponent from "../EmtpyStateComponent";
 import { useTransaction } from "../hooks/useTransaction";
 import { useEffect } from "react";
-import { isSafari } from "../../utility";
+import { isSafari, timestampConverter } from "../../utility";
 
 type TProps = {
   transactions?: TransactionProps[];
@@ -60,6 +60,7 @@ function TransactionComponent({
     setTransactions(newTransactions);
   }, []);
 
+  console.log(transaction, " from ls");
   return (
     <>
       {transaction ? (
@@ -85,6 +86,7 @@ function TransactionComponent({
           <EmptyStateComponent />
         ) : homepage ? (
           transactions?.map((tr: TransactionProps, index: number) => {
+            console.log(tr);
             return (
               <div key={index} className="transaction">
                 <div className="transactionLeft">
@@ -102,7 +104,9 @@ function TransactionComponent({
 
                   <div className="transInfo">
                     <span className="tranName">{tr.title}</span>
-                    <span className="tranTime">{tr.time}</span>
+                    <span className="tranTime">
+                      {timestampConverter(Number(tr.time))}
+                    </span>
                   </div>
                 </div>
                 <span

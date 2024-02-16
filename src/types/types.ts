@@ -36,7 +36,7 @@ export type TransactionProps = {
   title: string;
   id: string;
   type: 'expense' | 'income';
-  time: string;
+  time: number;
   category: ExpenseCategory | IncomeCategory;
   amount: string | number;
   icon?: { name: string, background: string}
